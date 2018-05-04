@@ -79,7 +79,7 @@ if(isset($_POST['sex'])&& isset($_POST['name'])&& isset($_POST['firstname'])&& i
             setlocale(LC_TIME, 'fr_FR.utf8', 'fra', 'fr_FR.iso8859-1', 'fr_FR', 'french', 'French_France.1252');
             $date= strftime('%Y-%m-%d %H-%M-%S'); 
             
-            $response = $bdd->prepare("INSERT INTO users (sex, name, firstname, email, password, register_date, activate) VALUES (:sex, :name, :firstname, :email, :password, :register_date, :activate)");
+            $response = $bdd->prepare("INSERT INTO users (sex, name, firstname, email, password, register_date, photo, activate) VALUES (:sex, :name, :firstname, :email, :password, :register_date, :photo, :activate)");
 
             $response->bindValue('sex',$_POST['sex']);
             $response->bindValue('name',$_POST['name']);
@@ -87,6 +87,7 @@ if(isset($_POST['sex'])&& isset($_POST['name'])&& isset($_POST['firstname'])&& i
             $response->bindValue('email',$_POST['email']);
             $response->bindValue('password',password_hash($_POST['password'], PASSWORD_BCRYPT));
             $response->bindValue('register_date', $date);
+            $response->bindValue('photo', $_POST['photo']);
             
             $response->bindValue('activate', 0);
 
@@ -114,7 +115,7 @@ if(isset($_POST['sex'])&& isset($_POST['name'])&& isset($_POST['firstname'])&& i
 
     <head>
         <meta charset="UTF-8">
-        <title>Exercice </title>
+        <title>projetPHP </title>
         <style>
 
 
@@ -154,6 +155,9 @@ if(isset($_POST['sex'])&& isset($_POST['name'])&& isset($_POST['firstname'])&& i
 
                 <label for="password_confirm">Confirmation du Mot de passe</label>
                 <input type="password" name="password_confirm" id="password_confirm" placeholder="Confirmation Mot de passe"><br/><br/>
+
+                <label for="photo">Photo</label>
+                <input type="file" name="photo" id="photo" placeholder="photo"><br/><br/>
 
                 <div class="g-recaptcha" data-sitekey="6LeJOVcUAAAAAE5R963ZdJlxZFq5izlk4J3n_td-"></div><br/><br/>
 
