@@ -1,0 +1,32 @@
+body {
+    background-image: url(img/image.jpg);
+    color: white;
+}
+
+#form {
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+}
+
+.g-recaptcha {
+    padding-left: 40%;
+}
+
+nav {
+    text-align: center;
+    color: white;
+}
+
+nav a {
+    color: white;
+}
+
+nav a:hover {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+h1 {
+    text-align: center;
+}
